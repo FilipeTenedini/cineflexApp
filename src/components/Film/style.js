@@ -10,9 +10,10 @@ export const Container = styled.article`
     background-color: ${c.bgColor};
     border-radius: 3px;
     box-shadow: 0px, 2px rgba(0, 0, 0, 0.1);
+    margin: 19px;
 `
 
-export const filmPic = styled.img`
+export const FilmPic = styled.img`
     width: 129px;
     height: 193px;
 `

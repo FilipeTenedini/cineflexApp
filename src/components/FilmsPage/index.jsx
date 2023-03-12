@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { Container } from "./style";
-import PageMsg from "../PageMsg";
+import TopMsg from "../TopMsg";
+import Film from "../Film";
 
 export default function FilmsPage(){
     const [films, setFilms] = useState(null);
@@ -9,7 +11,7 @@ export default function FilmsPage(){
     useEffect(() => {
         axios
             .get("https://mock-api.driven.com.br/api/v8/cineflex/movies")
-            .then(response => console.log(response.data))
+            .then( ({data}) => setFilms(data))
             .catch(err => console.log(err));
     }, [])
     
@@ -21,9 +23,13 @@ export default function FilmsPage(){
 
     return(
         <>
-            <PageMsg />
+            <TopMsg text="Selecione o filme"/>
             <Container>
-
+                {films.map( item => (
+                    <Link to={`/sessoes/${item.id}`} key={item.id} > 
+                        <Film picture={item.posterURL}/>
+                    </Link>
+                ))}
             </Container>
         </>
     );

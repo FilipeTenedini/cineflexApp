@@ -10,7 +10,7 @@ export default function SuccessPage(){
             com sucesso!
             </h2>
             <Infos>
-                <div ata-test="movie-info">
+                <div data-test="movie-info">
                     <Title>
                         Filme e sessão
                     </Title>

@@ -3,10 +3,11 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { SeatsArea, ColorsDict, FormArea, InputArea } from "./style";
 import { c } from "../../constants/colors";
-import TopMsg from "../TopMsg";
-import Seat from "../Seat"
-import Circle from "../Circle";
-import Footer from "../Footer";
+import { BASE_URL } from "../../constants/url";
+import TopMsg from "../../components/TopMsg";
+import Seat from "../../components/Seat"
+import Circle from "../../components/Circle";
+import Footer from "../../components/Footer";
 
 export default function SeatsPage(){
     const { idSessao } = useParams();
@@ -19,7 +20,7 @@ export default function SeatsPage(){
 
     useEffect(() => {
         axios
-            .get(`https://mock-api.driven.com.br/api/v8/cineflex/showtimes/${idSessao}/seats`)
+            .get(`${BASE_URL}/showtimes/${idSessao}/seats`)
             .then( ({data}) => {
                 setSeats(data.seats)
                 setMovie({
@@ -61,7 +62,7 @@ export default function SeatsPage(){
 
     const reserveSeats = () => {
         axios
-        .post("https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many",{
+        .post(`${BASE_URL}/seats/book-many`,{
                 ids: selectedSeats,
                 name: name,
                 cpf: cpf

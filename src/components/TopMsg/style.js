@@ -8,7 +8,6 @@ export const MsgSpace = styled.div`
     justify-content: center;
     align-items: center;
 `
-
 export const MsgText = styled.h2`
     font-weight: 400;
     font-size: 24px;

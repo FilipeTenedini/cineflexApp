@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Container } from "./style";
-import TopMsg from "../TopMsg";
-import Film from "../Film";
+import { BASE_URL } from "../../constants/url";
+import TopMsg from "../../components/TopMsg";
+import Film from "../../components/Film";
 
 export default function FilmsPage(){
     const [films, setFilms] = useState(null);
 
     useEffect(() => {
         axios
-            .get("https://mock-api.driven.com.br/api/v8/cineflex/movies")
+            .get(`${BASE_URL}/movies`)
             .then( ({data}) => setFilms(data))
             .catch(err => console.log(err));
     }, [])

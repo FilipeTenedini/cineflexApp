@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import { SessionArea, SessionDay, SessionHours, SessionHour } from "./style";
-import TopMsg from "../TopMsg";
-import Footer from "../Footer";
+import TopMsg from "../../components/TopMsg";
+import Footer from "../../components/Footer";
+import { BASE_URL } from "../../constants/url";
 
 export default function SessionsPage(){
     const { idFilme } = useParams();
@@ -12,7 +13,7 @@ export default function SessionsPage(){
 
     useEffect(() => {
         axios
-            .get(`https://mock-api.driven.com.br/api/v8/cineflex/movies/${idFilme}/showtimes`)
+            .get(`${BASE_URL}/movies/${idFilme}/showtimes`)
             .then( ({data}) => {
                 setSessions(data.days);
                 setMovie({

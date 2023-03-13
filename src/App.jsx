@@ -1,9 +1,9 @@
 import Header from "./components/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import FilmsPage from "./components/FilmsPage";
-import SessionsPage from "./components/SessionsPage";
-import SeatsPage from "./components/SeatsPage";
-import SuccessPage from "./components/SuccessPage";
+import FilmsPage from "./pages/FilmsPage";
+import SessionsPage from "./pages/SessionsPage";
+import SeatsPage from "./pages/SeatsPage";
+import SuccessPage from "./pages/SuccessPage";
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export const GlobalStyle = createGlobalStyle`
+export const ResetCss = createGlobalStyle`
     *{
         margin: 0;
         padding: 0;
@@ -49,8 +49,5 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-body{
-	font-family: 'Roboto', sans-serif;
 }
 `

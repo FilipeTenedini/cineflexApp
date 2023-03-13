@@ -1,9 +1,9 @@
 import {MsgSpace, MsgText} from './style';
 
-export default function TopMsg({text}){
+export default function TopMsg({text, textColor}){
     return (
         <MsgSpace>
-            <MsgText> {text} </MsgText>
+            <MsgText textColor={textColor}> {text} </MsgText>
         </MsgSpace>
     );
 }

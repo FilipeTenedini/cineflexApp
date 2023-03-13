@@ -6,15 +6,6 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    h2{
-        text-align: center;
-        padding-top: 40px;
-        font-weight: 700;
-        font-size: 24px;
-        line-height: 28px;
-        color: ${c.success}
-    }
 `
 export const Infos = styled.div`
     margin: auto;

@@ -1,14 +1,12 @@
 import { useLocation, Link } from 'react-router-dom';
 import { Container, Infos, Title, Text, HomeButton } from './style';
-
+import { c } from '../../constants/colors';
+import TopMsg from "../../components/TopMsg";
 export default function SuccessPage(){
     const { state } = useLocation();
     return (
         <Container>
-            <h2>
-            Pedido feito <br />
-            com sucesso!
-            </h2>
+            <TopMsg text="Pedido feito <br /> com sucesso!" color={c.success}/>
             <Infos>
                 <div data-test="movie-info">
                     <Title>

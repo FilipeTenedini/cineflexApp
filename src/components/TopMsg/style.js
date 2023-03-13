@@ -11,5 +11,5 @@ export const MsgSpace = styled.div`
 export const MsgText = styled.h2`
     font-weight: 400;
     font-size: 24px;
-    color: ${c.textColor}
+    color: ${({ textColor }) => textColor ?? c.textColor }
 `

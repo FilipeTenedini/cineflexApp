@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Container } from "./style";
 import { BASE_URL } from "../../constants/url";
+import { Container } from "./style";
 import TopMsg from "../../components/TopMsg";
 import Film from "../../components/Film";
 
-export default function FilmsPage(){
+export default function HomePage(){
     const [films, setFilms] = useState(null);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ export default function FilmsPage(){
 
     return(
         <>
-            <TopMsg text="Selecione o filme"/>
+            <TopMsg text="Selecione o filme" />
             <Container>
                 {films.map( item => (
                         <Film

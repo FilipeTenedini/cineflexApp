@@ -4,8 +4,14 @@ import { c } from "../../constants/colors";
 export const SessionArea = styled.div`
     display: flex;
     flex-direction: column;
-    margin-left: 24px;
-    margin-bottom: 23px;
+    justify-content: center;
+    align-items: center;
+`
+export const SessionInfos = styled.div`
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    margin-bottom: 30px;
 `
 export const SessionDay = styled.div`
     font-weight: 400;
@@ -15,7 +21,8 @@ export const SessionDay = styled.div`
     color: ${c.textColor};
 `
 export const SessionHours = styled.div`
-    display: flex;    
+    display: flex;
+    justify-content: space-around;
 
     a {
         text-decoration: none;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import { SessionArea, SessionDay, SessionHours, SessionHour } from "./style";
+import { SessionArea, SessionInfos, SessionDay, SessionHours, SessionHour } from "./style";
 import TopMsg from "../../components/TopMsg";
 import Footer from "../../components/Footer";
 import { BASE_URL } from "../../constants/url";
@@ -35,17 +35,19 @@ export default function SessionsPage(){
             <TopMsg text="Selecione o horário" />
             {sessions.map( item => (
                 <SessionArea key={item.id} data-test="movie-day">
-                    <SessionDay>{item.weekday} - {item.date}</SessionDay>
-                    <SessionHours>
-                        { item.showtimes.map( showtime => (
-                                <SessionHour key={showtime.id} data-test="showtime">
-                                    <Link to={`/assentos/${showtime.id}`}> 
-                                        {showtime.name}
-                                    </Link>    
-                                </SessionHour> 
-                            ) ) 
-                        }
-                    </SessionHours>
+                    <SessionInfos>
+                        <SessionDay>{item.weekday} - {item.date}</SessionDay>
+                        <SessionHours>
+                            { item.showtimes.map( showtime => (
+                                    <SessionHour key={showtime.id} data-test="showtime">
+                                        <Link to={`/assentos/${showtime.id}`}> 
+                                            {showtime.name}
+                                        </Link>    
+                                    </SessionHour> 
+                                ) ) 
+                            }
+                        </SessionHours>
+                    </SessionInfos>
                 </SessionArea>
             ))
 

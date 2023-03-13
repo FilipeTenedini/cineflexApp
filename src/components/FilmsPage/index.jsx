@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { Container } from "./style";
 import TopMsg from "../TopMsg";
 import Film from "../Film";
@@ -26,9 +25,11 @@ export default function FilmsPage(){
             <TopMsg text="Selecione o filme"/>
             <Container>
                 {films.map( item => (
-                    <Link to={`/sessoes/${item.id}`} key={item.id} > 
-                        <Film picture={item.posterURL}/>
-                    </Link>
+                        <Film 
+                        picture={item.posterURL}
+                        id={item.id}
+                        name={item.title}
+                        key={item.id} />
                 ))}
             </Container>
         </>

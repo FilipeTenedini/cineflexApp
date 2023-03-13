@@ -25,7 +25,7 @@ export default function FilmsPage(){
             <TopMsg text="Selecione o filme"/>
             <Container>
                 {films.map( item => (
-                        <Film 
+                        <Film
                         picture={item.posterURL}
                         id={item.id}
                         name={item.title}

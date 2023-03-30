@@ -2,7 +2,7 @@ import { FooterArea, FilmImage, FilmPic, FilmInfos } from "./style";
 
 export default function Footer({picture, name, hours}){
     return (
-        <FooterArea data-test="footer">
+        <FooterArea>
             <FilmImage>
                 <FilmPic src={picture} alt={name} />
             </FilmImage>

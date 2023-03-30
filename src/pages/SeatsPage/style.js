@@ -8,7 +8,7 @@ export const SeatsArea = styled.div`
     align-items: center;
     gap: 18px 7px;
 `
-export const ColorsDict = styled.div`
+export const CaptionArea = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;

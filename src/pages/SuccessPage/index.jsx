@@ -6,9 +6,9 @@ export default function SuccessPage(){
     const { state } = useLocation();
     return (
         <Container>
-            <TopMsg text="Pedido feito <br /> com sucesso!" color={c.success}/>
+            <TopMsg text="Pedido feito com sucesso!" color={c.success}/>
             <Infos>
-                <div data-test="movie-info">
+                <div>
                     <Title>
                         Filme e sessão
                     </Title>
@@ -17,7 +17,7 @@ export default function SuccessPage(){
                         {state.date}
                     </Text>
                 </div>
-                <div data-test="seats-info">
+                <div>
                     <Title>
                         Ingressos
                     </Title>
@@ -27,7 +27,7 @@ export default function SuccessPage(){
                         ))}
                     </Text>
                 </div>
-                <div data-test="client-info">
+                <div>
                     <Title>
                             
                         Comprador
@@ -38,7 +38,7 @@ export default function SuccessPage(){
                     </Text>
                 </div>
             </Infos>
-            <HomeButton data-test="go-home-btn">
+            <HomeButton>
                 <Link to={"/"}>
                     Voltar pra Home
                 </Link>

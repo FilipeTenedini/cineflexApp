@@ -1,13 +1,12 @@
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { SeatsArea, ColorsDict, FormArea, InputArea } from "./style";
-import { c } from "../../constants/colors";
+import { SeatsArea, FormArea, InputArea } from "./style";
 import { BASE_URL } from "../../constants/url";
 import TopMsg from "../../components/TopMsg";
 import Seat from "../../components/Seat"
-import Circle from "../../components/Circle";
 import Footer from "../../components/Footer";
+import Captions from "./Caption";
 
 export default function SeatsPage(){
     const { idSessao } = useParams();
@@ -46,28 +45,33 @@ export default function SeatsPage(){
         setCpf('');
     }
     
-    const addSeat = (number) => setSelectedSeats([number, ...selectedSeats]);
+    const toggleSeat = (number) => {
+        if (selectedSeats.includes(number)) {
+            const newList = selectedSeats.filter(item => item !== number);
+            setSelectedSeats([...newList]);
+        } else {
+            setSelectedSeats([number, ...selectedSeats])
+        }
+        
+    };
 
-    const removeSeat = (number) => {
-        const newList = selectedSeats.filter(item => item !== number);
-        setSelectedSeats([...newList]);
-    }
-    
-    const addSeatNumber = (n) => setSeatNumber([n, ...seatNumber]);
-
-    const removeSeatNumber = (n) => {
-        const newList = seatNumber.filter(item => item !== n);
-        setSeatNumber([...newList]);
-    }
+    const toggleSeatNumber = (n) => {
+        if (seatNumber.includes(n)) {
+            const newList = seatNumber.filter(item => item !== n);
+            setSeatNumber([...newList]);
+        } else {
+            setSeatNumber([n, ...seatNumber]);
+        }
+    } 
 
     const reserveSeats = () => {
         axios
         .post(`${BASE_URL}/seats/book-many`,{
                 ids: selectedSeats,
-                name: name,
-                cpf: cpf
+                name,
+                cpf
             })
-        .catch(err => console.log('azedo'));
+        .catch(err => console.log('error.'));
     }
 
     const validateInfos = () => {
@@ -96,53 +100,33 @@ export default function SeatsPage(){
                 available={eachSeat.isAvailable}
                 number={eachSeat.name}
                 id={eachSeat.id}
-                addSeat={(n) => addSeat(n)}
-                removeSeat={(n) => removeSeat(n)}
-                addSeatNumber={(n) => addSeatNumber(n)}
-                removeSeatNumber={(n) => removeSeatNumber(n)}
+                toggleSeat={(n) => toggleSeat(n)}
+                toggleSeatNumber={(n) => toggleSeatNumber(n)}
                 />
             ))}
         </SeatsArea>
-        <ColorsDict>
-                <Circle 
-                bgColor={c.selectedBtn}
-                borderColor={c.selectedBtnContour}
-                text={'Selecionado'}
-                />
-                <Circle 
-                bgColor={c.fullLightColor}
-                borderColor={c.midLightColor}
-                text={'Disponível'}
-                />
-                <Circle 
-                bgColor={c.unavailableBtn}
-                borderColor={c.unavailableBtnCountour}
-                text={'Indisponível'}
-                />
-        </ColorsDict>
+        <Captions />
         <FormArea>
             <InputArea>
                 Nome do Comprador:
                 <input
-                data-test="client-name"
-                placeholder="Digite seu nome (Mínimo 3 letras)..." 
-                value={name}
-                onChange={e => setName(e.target.value)}
+                    placeholder="Digite seu nome (Mínimo 3 letras)..." 
+                    value={name}
+                    onChange={e => setName(e.target.value)}
                 />
             </InputArea>
             <InputArea>
                 CPF do Comprador (apenas números):
                 <input
-                data-test="client-cpf"
-                placeholder="Digite seu CPF (apenas números)..."
-                value={cpf}
-                onChange={e => setCpf(e.target.value)}
+                    placeholder="Digite seu CPF (apenas números)..."
+                    value={cpf}
+                    onChange={e => setCpf(e.target.value)}
                 />
             </InputArea>
 
-            <button onClick={validateInfos} data-test="book-seat-btn">
+            <button onClick={validateInfos}>
                 <Link 
-                to="/sucesso" 
+                to="/sucesso"
                 state={
                         {
                             film: movie.name,
@@ -157,9 +141,9 @@ export default function SeatsPage(){
             </button>
         </FormArea>
         <Footer 
-        picture={movie.picture}
-        name={movie.name}
-        hours={`${movie.day} - ${movie.hour}`}
+            picture={movie.picture}
+            name={movie.name}
+            hours={`${movie.day} - ${movie.hour}`}
         />
         </>
     );

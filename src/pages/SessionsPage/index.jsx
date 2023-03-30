@@ -34,12 +34,12 @@ export default function SessionsPage(){
         <>
             <TopMsg text="Selecione o horário" />
             {sessions.map( item => (
-                <SessionArea key={item.id} data-test="movie-day">
+                <SessionArea key={item.id}>
                     <SessionInfos>
                         <SessionDay>{item.weekday} - {item.date}</SessionDay>
                         <SessionHours>
                             { item.showtimes.map( showtime => (
-                                    <SessionHour key={showtime.id} data-test="showtime">
+                                    <SessionHour key={showtime.id}>
                                         <Link to={`/assentos/${showtime.id}`}> 
                                             {showtime.name}
                                         </Link>    

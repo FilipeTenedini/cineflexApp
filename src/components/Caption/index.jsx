@@ -1,5 +1,5 @@
 import { CircleSpace, CircleColor, CircleText } from "./style";
-export default function Circle({bgColor, borderColor, text}){
+export default function Caption({bgColor, borderColor, text}){
     return (
         <CircleSpace>
             <CircleColor 

@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { SeatNumber } from "./style";
 
-export default function Seat({available, number, id, addSeat, removeSeat, addSeatNumber, removeSeatNumber}){
+export default function Seat({available, number, id, toggleSeat, toggleSeatNumber}){
     const [selected, setSelected] = useState(false);
 
     const verifySeat = () => {
         if (available) {
             if (!selected){
                 setSelected(true);
-                addSeat(id);
-                addSeatNumber(number);
+                toggleSeat(id);
+                toggleSeatNumber(number);
             } else {
                 setSelected(false);
-                removeSeat(id)
-                removeSeatNumber(number);
+                toggleSeat(id)
+                toggleSeatNumber(number);
             }
         } else{
             alert("Esse assento não está disponível.");
@@ -22,7 +22,6 @@ export default function Seat({available, number, id, addSeat, removeSeat, addSea
     
     return (
         <SeatNumber
-        data-test="seat"
         available={available}
         selected={selected}
         onClick={verifySeat}
